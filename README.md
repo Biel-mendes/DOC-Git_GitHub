@@ -145,6 +145,10 @@ git clone https://github.com/usuario/repositorio.git
 #clona um repositorio em uma pasta no seu computador
 
 git show <id do commit> # mostra todas as informações do commit selecionado
+
+git diff # esse comando permite você vizualizar todas suas alterações ainda não comitadas e permite comparar commits 
+git diff <id do commit> # compara a sua alteração com o último commit
+git diff <id do commit>..<outro id de commit> #ele faz a comparação entre dois commits
 			
 ```
 
