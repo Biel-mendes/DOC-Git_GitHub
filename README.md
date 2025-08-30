@@ -187,3 +187,15 @@ diga: usar o notion para gerar um arquivo em markdawn e passar para o [README.md
 É uma ferramenta muito útil para ignorar arquivos que deseja esconder ou que não são relevantes.
 
 diga: usar o site [gitignore.i](http://gitignore.io)o, ele gera um arquivo gitignore com todos os arquivos que podem ser ignorado em um  projeto de determinada linguagem.
+
+---
+### Parâmetros do `log` 
+
+No comando `git log` podemos adicionar diversos parâmetros para otimizar nossas buscas pelos commits 
+
+```bash
+git log -p #exibe com detalhes todas as informações do commit incluindo trechos de códigos modificados
+
+git log --oneline #exibe um resumo do commit, somente com as informações mais relavantes
+
+```
