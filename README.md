@@ -142,7 +142,10 @@ git status #isso mostra arquivos modifocado e adicionados
 git log	#isso mostra o historico de todos os commits feitos
 
 git clone https://github.com/usuario/repositorio.git 
-#clona um repositorio em uma pasta no seu computador			
+#clona um repositorio em uma pasta no seu computador
+
+git show <id do commit> # mostra todas as informações do commit selecionado
+			
 ```
 
 ---
