@@ -234,3 +234,14 @@ git log -p #exibe com detalhes todas as informações do commit incluindo trecho
 git log --oneline #exibe um resumo do commit, somente com as informações mais relavantes
 
 ```
+---
+### Viajando no Tempo
+
+O comando `restore` permite trasitar entre commits anteriores, aelém de reverter estados, ele pode cancelar um arquivo dentro de um git add além, é claro, de reverter uma modificação. 
+
+```bash
+# esse comando retira um retrocede um estado de um arquivo dentro de um git add
+git restore --staged nome-do-arquivo
+# esse comando te permite vizualizar o um arquivo colocando o nome do arquivo no final ou ver todo o projeto colocando o ponto.
+git restore --source=id-do-commit .
+```
