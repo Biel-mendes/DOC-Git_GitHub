@@ -119,6 +119,15 @@ git diff nome-da-branch
 git push origin nome-da-branch
 ```
 
+Outro comando muito útil para manter uma branch atualizada é o:
+
+```bash
+
+git rebase main
+
+```
+esse comando traz todos os commits da branch main para sua nova branch, garantindo assim que sua branche ao realizar o mange não seja uma versão desatualizada.
+
 ---
 
 ### Merge
