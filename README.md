@@ -200,6 +200,13 @@ git add <file não adicionado>
 git commit --amend
 ```
 
+### Como Reverter uma Modificação
+
+```bash
+# você apaga todas as modificações feitas, você também adicionar no lugar do ponto o arquivo.file que deseja resetar
+git restore .
+```
+
 ---
 
 ### [README.md](http://README.md)
