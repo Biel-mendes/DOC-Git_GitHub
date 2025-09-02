@@ -126,7 +126,7 @@ Outro comando muito útil para manter uma `branch` atualizada é o:
 git rebase main
 
 ```
-esse comando traz todos os commits da branch main para sua nova branch, garantindo assim que sua branche ao realizar o mange não seja uma versão desatualizada.
+esse comando traz todos os `commits` da branch main para sua nova `branch`, garantindo assim que sua branche ao realizar o `menge` não seja uma versão desatualizada.
 
 ---
 
