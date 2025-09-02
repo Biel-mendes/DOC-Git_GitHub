@@ -272,6 +272,10 @@ Ferramenta para ignorar arquivos desnecessários ou confidenciais. Dica: o site 
   ```bash
   git log --oneline
   ```
+  - **Exibe todo o histórico do projeto de forma visual:**
+  ```bash
+  git log --graph
+  ```
 
 ---
 
