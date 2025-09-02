@@ -163,6 +163,34 @@ git merge nome-da-branch  # Une branch especificada na main
 
 ---
 
+### Git Cherry-pick
+
+O comando `git cherry-pick` permite aplicar um commit específico de outra branch na branch atual. É muito útil para trazer correções ou funcionalidades pontuais sem precisar fazer um merge completo da branch de origem.
+
+**Como usar:**
+```bash
+git cherry-pick <id-do-commit>
+```
+
+**Exemplo de uso:**  
+Suponha que você está na branch `main` e deseja trazer apenas um commit específico da branch `feature-x`, basta executar:
+
+```bash
+git cherry-pick a1b2c3d4
+```
+Onde `a1b2c3d4` é o ID do commit desejado.  
+O Git irá aplicar esse commit na sua branch atual, preservando o histórico do commit original.
+
+**Observações:**
+- Você pode cherry-pick múltiplos commits de uma vez:  
+  ```bash
+  git cherry-pick id1 id2 id3
+  ```
+- Caso ocorra conflito, o Git irá solicitar que você resolva antes de concluir o cherry-pick.
+- Ideal para aplicar hotfixes ou correções específicas em produção sem trazer todo o histórico de outra branch.
+
+---
+
 ### Comandos Úteis do Git
 
 ```bash
