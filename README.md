@@ -171,6 +171,7 @@ git stash
 git stash apply numero-do-stash
 git stash pop # aplica a modificação no topo do índice
 git stash drop # apaga a modificação no topo do índice
+git stash list # lista todas as stash 
 ```
 
 ---
