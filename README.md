@@ -162,6 +162,17 @@ git diff <id do commit>..<outro id de commit> #ele faz a comparação entre dois
 			
 ```
 
+Um outro comando muito útil para o git é o `git stash`, ele permite guardar suas alterações incompletas(não podem ser commitadas) para poder resgatá-las mais tarde. 
+
+```bash
+#guarda todas suas alterações e mantém o código sem elas, você pode fazer varias stash
+git stash
+# todos os stash são guardados em um índice, com apply você escolhe qual você stash você quer aplicar
+git stash apply numero-do-stash
+git stash pop # aplica a modificação no topo do índice
+git stash drop # apaga a modificação no topo do índice
+```
+
 ---
 
 ### Como Reverter um Commit?
