@@ -83,6 +83,7 @@ Trocando para a `Branch` criada:
 
 ```bash
 git checkout nome-da-branch
+git switch nome-da-branch
 ```
 
 Listar todas as `Branches` criadas:
