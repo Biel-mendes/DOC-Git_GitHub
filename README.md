@@ -4,50 +4,54 @@
 
 ## Comandos Mais Comuns
 
-Aqui vou colocar, para futuras consultas, os principais comandos do git.
+Este guia reúne os principais comandos do Git para consulta rápida e prática.
 
-Ao criar um repositório no github e um projeto localmente, o primeiro comando que deve ser executado no terminal dentro do diretório do projeto é:
+### Inicializando um Projeto Git
+
+Após criar um repositório no GitHub e um projeto localmente, o primeiro comando a ser executado no terminal, dentro do diretório do projeto, é:
 
 ```bash
 git init
 ```
+Cria o diretório `.git`, tornando seu projeto rastreável pelo Git e pronto para sincronização com o repositório remoto.
 
-isso irá criar um diretório “.git” em seu projeto assim permitindo com que consiga sincronizar com o repositorio online e possa fazer mudanças posteriores.
+### Adicionando Arquivos
 
-Quando executar o primeiro comando você deve “dizer ao git” quais arquivos do seus diretório deseja adicionar ao repositório. Para isso, use o seguinte comando:
-
-```bash
-git add .  # Adiciona todos os arquivos presentes no diretório ao repositório
-git add nomeDoArquivo  # Adiciona apenas um arquivo específico
-```
-
-No final desta etapa todos os arquivos que adicionou usando o comando acima estarão disponíveis para o `commit`. 
-
-O `commit` é um comando que registra, localmente, as alterações adicionadas ao `git add`.
+Escolha os arquivos que deseja rastrear pelo Git:
 
 ```bash
-git commit -m " discrição da alteração "
-#ao fazer um commit, é obrigatório deixar 
-#uma mensagem sobre a alteração feita
+git add .                # Adiciona todos os arquivos
+git add nomeDoArquivo    # Adiciona apenas um arquivo específico
+```
+Após esta etapa, os arquivos estão prontos para serem commitados.
+
+### Realizando Commits
+
+O commit registra as alterações localmente. É obrigatório informar uma mensagem descrevendo o que foi alterado:
+
+```bash
+git commit -m "descrição da alteração"
 ```
 
-Assim todos os arquivos serão salvos localmente e estarão prontos para serem enviados ao repositório remoto via `git push`.
+### Vinculando ao Repositório Remoto
 
-Caso seja seu primeiro `commit` informe ao git o link do repositório, desta forma seu arquivos serão salvos no seu repositório.
+Se for seu primeiro commit, conecte seu projeto ao repositório online:
 
 ```bash
 git remote add origin <URL_DO_REPOSITÓRIO>
 ```
 
-O `push` é o comando responsável por enviar as alterações feitas ao repositório remoto.
+### Enviando Alterações para o Remoto
+
+O comando abaixo envia todas as alterações para o repositório remoto:
 
 ```bash
 git push origin main
 ```
 
-Assim, todas as alterações estarão disponíveis no seu repositório online e poderão ser acessadas de qualquer computador com permissão.
+### Sincronizando com o Remoto
 
-Quando existe mais de um colaborador no projeto o `git pull` é um comando muito importante para sempre trabalhar em suas versão mais atualizada, pois ele que traz as alterações remotas para o diretório local.
+Para garantir que está trabalhando na versão mais atualizada (especialmente em projetos colaborativos):
 
 ```bash
 git pull
@@ -57,8 +61,10 @@ git pull
 
 ## Configurações de Conta
 
+Configure seu nome de usuário e e-mail para que sejam associados aos commits:
+
 ```bash
-git config --global user.name "Seu Nome de Usuario"
+git config --global user.name "Seu Nome de Usuário"
 git config --global user.email "Seu Email do GitHub"
 ```
 
@@ -66,183 +72,194 @@ git config --global user.email "Seu Email do GitHub"
 
 ## Comandos Para Versionamento
 
-A parte do versionamento é uma das partes mais importantes de um projeto, pois permite que os colaboradores trabalhem em conjunto em diferentes versões do código, sem que a raiz principal seja modificada.
+O versionamento permite que colaboradores trabalhem simultaneamente em diferentes versões do código. Os principais conceitos envolvem branches (ramificações) e tags.
 
 ### Branches
 
-São como cópias do projeto que podem ser trabalhadas em paralelo sem modificar a raiz do código.
+Permitem criar cópias paralelas do projeto para desenvolver funcionalidades ou correções sem afetar o código principal.
 
-Criando uma `Branch`:
+- **Criar uma branch:**
+  ```bash
+  git branch nome-da-branch
+  git checkout -b nome-da-branch  # Cria e já muda para ela
+  ```
+- **Trocar de branch:**
+  ```bash
+  git checkout nome-da-branch
+  git switch nome-da-branch
+  ```
+- **Listar branches:**
+  ```bash
+  git branch         # Locais
+  git branch -a      # Inclui remotas
+  ```
+- **Deletar branch:**
+  ```bash
+  git branch -d nome-da-branch     # Deleção segura
+  git branch -D nome-da-branch     # Força a exclusão
+  ```
+- **Renomear branch:**
+  ```bash
+  git branch -m novo-nome
+  git branch -m nome-antigo novo-nome
+  ```
+- **Mostrar diferenças entre branches:**
+  ```bash
+  git diff nome-da-branch
+  ```
+- **Enviar branch para o remoto:**
+  ```bash
+  git push origin nome-da-branch
+  ```
+- **Atualizar branch com commits da main:**
+  ```bash
+  git rebase main
+  ```
+  Traz os commits da `main` para sua branch, evitando desatualizações antes do merge.
 
-```bash
-git branch nome-da-branch 
-git checkout -b nome-da-branch #criar uma branch e mudar para ela logo em seguida
-```
+---
 
-Trocando para a `Branch` criada:
+### Git Tag – Controle de Versão
 
-```bash
-git checkout nome-da-branch
-git switch nome-da-branch
-```
+Tags são usadas para marcar pontos específicos na linha do tempo do projeto, geralmente indicando versões estáveis ou releases.
 
-Listar todas as `Branches` criadas:
-
-```bash
-git branch
-git branch -a #listar todas as branch incluindo as remotas
-```
-
-Deletar uma `Branch`:
-
-```bash
-git branch -d nome-da-branch
-git branch -D nome-da-branch #força a exclusão da branch 
-```
-
-Mudar o nome de uma `Branch`:
-
-```bash
-git branch -m novo-nome #caso esteja na branch atual
-git branch -m nome-antigo novo-nome #caso esteja em alguma outra branch
-```
-
-Mostrar as diferenças entres `branches`:
-
-```bash
-git diff nome-da-branch
-```
-
-`Push` de uma `Branch` para o repositório remoto:
-
-```bash
-git push origin nome-da-branch
-```
-
-Outro comando muito útil para manter uma `branch` atualizada é o:
-
-```bash
-
-git rebase main
-
-```
-esse comando traz todos os `commits` da branch main para sua nova `branch`, garantindo assim que sua branche ao realizar o `menge` não seja uma versão desatualizada.
+- **Criar uma tag simples:**
+  ```bash
+  git tag v1.0.0
+  ```
+- **Tag com anotação (recomendado para releases):**
+  ```bash
+  git tag -a v1.0.0 -m "Release versão 1.0.0"
+  ```
+- **Listar todas as tags:**
+  ```bash
+  git tag
+  ```
+- **Enviar tags para o repositório remoto:**
+  ```bash
+  git push origin v1.0.0
+  git push origin --tags        # Envia todas as tags
+  ```
+- **Ver detalhes de uma tag:**
+  ```bash
+  git show v1.0.0
+  ```
+- **Deletar tag local/remota:**
+  ```bash
+  git tag -d v1.0.0
+  git push origin --delete v1.0.0
+  ```
 
 ---
 
 ### Merge
 
-É um comando que junta `branches`, muito util para atualização do projeto, trazendo atualizações e mudanças feitas em paralelo
-
-Ao mudar para a `Branch` que principal, realize o seguinte comando para realizar um `Merge`: 
+Junta branches, trazendo alterações desenvolvidas em paralelo para a principal.
 
 ```bash
-git checkout main #muda para a raiz do projeto
-git merge nome-da-branch
+git checkout main          # Vai para branch principal
+git merge nome-da-branch  # Une branch especificada na main
 ```
 
 ---
 
-### Comandos úteis do Git
+### Comandos Úteis do Git
 
 ```bash
-git status #isso mostra arquivos modifocado e adicionados 
-						#ou que ainda não foram rastreados
-						
-git log	#isso mostra o historico de todos os commits feitos
-
-git clone https://github.com/usuario/repositorio.git 
-#clona um repositorio em uma pasta no seu computador
-
-git show <id do commit> # mostra todas as informações do commit selecionado
-
-git diff # esse comando permite você vizualizar todas suas alterações ainda não comitadas e permite comparar commits 
-git diff <id do commit> # compara a sua alteração com o último commit
-git diff <id do commit>..<outro id de commit> #ele faz a comparação entre dois commits
-			
-```
-
-Um outro comando muito útil para o git é o `git stash`, ele permite guardar suas alterações incompletas(não podem ser commitadas) para poder resgatá-las mais tarde. 
-
-```bash
-#guarda todas suas alterações e mantém o código sem elas, você pode fazer varias stash
-git stash
-# todos os stash são guardados em um índice, com apply você escolhe qual você stash você quer aplicar
-git stash apply numero-do-stash
-git stash pop # aplica a modificação no topo do índice
-git stash drop # apaga a modificação no topo do índice
-git stash list # lista todas as stash 
+git status                 # Mostra arquivos modificados, adicionados ou não rastreados
+git log                    # Histórico de commits
+git clone <URL>            # Clona um repositório remoto
+git show <id do commit>    # Detalhes de um commit específico
+git diff                   # Visualiza alterações não commitadas; compara commits
+git diff <id do commit>    # Compara alterações com o último commit
+git diff <id1>..<id2>      # Compara dois commits diferentes
 ```
 
 ---
 
-### Como Reverter um Commit?
+### Git Stash
+
+Permite guardar alterações não finalizadas, para recuperá-las depois.
 
 ```bash
-git log #mostra todos os commits e seus id
-git revert "coloque aqui o id do seu commit"
-git push origin main
-```
-
-### E Como Deletar um Commit?
-
-```bash
-git log #é preciso pegar o id do commit 
-				#anterior ao que deseja deletar
-git reset --hard "coloque o id do anterior commit aqui"
-```
-
-### Como Alterar um Commit?
-
-```bash
-git commit --amend -m "nova menssagem"
-#ou
-git add <file não adicionado>
-git commit --amend
-```
-
-### Como Reverter uma Modificação
-
-```bash
-# você apaga todas as modificações feitas, você também adicionar no lugar do ponto o arquivo.file que deseja resetar
-git restore .
+git stash                  # Salva todas alterações não commitadas
+git stash apply <num>      # Aplica stash específico
+git stash pop              # Aplica e remove o topo do stash
+git stash drop             # Remove o topo do stash
+git stash list             # Lista todos stashes
 ```
 
 ---
 
-### [README.md](http://README.md)
+### Como Reverter, Deletar e Alterar Commits
 
-Pode ser formatado com tags html ou markdown.
-
-diga: usar o notion para gerar um arquivo em markdawn e passar para o [README.md](http://README.md) no git. 
+- **Reverter um commit:**
+  ```bash
+  git log
+  git revert <id do commit>
+  git push origin main
+  ```
+- **Deletar um commit (retroceder para commit anterior):**
+  ```bash
+  git log
+  git reset --hard <id do commit anterior>
+  ```
+- **Alterar mensagem ou incluir arquivos em um commit:**
+  ```bash
+  git commit --amend -m "nova mensagem"
+  git add <arquivo>
+  git commit --amend
+  ```
 
 ---
 
-### .gitignore.
-
-É uma ferramenta muito útil para ignorar arquivos que deseja esconder ou que não são relevantes.
-
-diga: usar o site [gitignore.i](http://gitignore.io)o, ele gera um arquivo gitignore com todos os arquivos que podem ser ignorado em um  projeto de determinada linguagem.
-
----
-### Parâmetros do `log` 
-
-No comando `git log` podemos adicionar diversos parâmetros para otimizar nossas buscas pelos commits 
+### Reverter Modificações
 
 ```bash
-git log -p #exibe com detalhes todas as informações do commit incluindo trechos de códigos modificados
-
-git log --oneline #exibe um resumo do commit, somente com as informações mais relavantes
-
+git restore .                      # Apaga todas modificações feitas
+git restore <arquivo>              # Restaura arquivo específico
 ```
+
 ---
+
+### README.md
+
+Este arquivo pode ser formatado com tags HTML ou Markdown. Dica: use ferramentas como o Notion para gerar o conteúdo e exportar em Markdown para facilitar o processo.
+
+---
+
+### .gitignore
+
+Ferramenta para ignorar arquivos desnecessários ou confidenciais. Dica: o site [gitignore.io](https://gitignore.io) gera arquivos `.gitignore` customizados para diferentes linguagens e frameworks.
+
+---
+
+### Parâmetros Avançados do `git log`
+
+- **Exibir detalhes completos dos commits:**
+  ```bash
+  git log -p
+  ```
+- **Resumo dos commits:**
+  ```bash
+  git log --oneline
+  ```
+
+---
+
 ### Viajando no Tempo
 
-O comando `restore` permite trasitar entre commits anteriores, aelém de reverter estados, ele pode cancelar um arquivo dentro de um git add além, é claro, de reverter uma modificação. 
+O comando `restore` permite transitar entre commits anteriores, reverter estados e desfazer adições ao staging.
 
 ```bash
-# esse comando retira um retrocede um estado de um arquivo dentro de um git add
-git restore --staged nome-do-arquivo
-# esse comando te permite vizualizar o um arquivo colocando o nome do arquivo no final ou ver todo o projeto colocando o ponto.
-git restore --source=id-do-commit .
+git restore --staged nome-do-arquivo     # Remove arquivo do staging
+git restore --source=<id-do-commit> .    # Restaura projeto/arquivo de commit específico
 ```
+
+---
+
+## Referências
+
+- [Documentação Oficial Git](https://git-scm.com/doc)
+- [Documentação GitHub](https://docs.github.com/)
+- [gitignore.io](https://gitignore.io)
