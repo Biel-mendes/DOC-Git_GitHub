@@ -119,7 +119,7 @@ git diff nome-da-branch
 git push origin nome-da-branch
 ```
 
-Outro comando muito útil para manter uma branch atualizada é o:
+Outro comando muito útil para manter uma `branch` atualizada é o:
 
 ```bash
 
